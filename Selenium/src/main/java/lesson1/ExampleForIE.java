@@ -4,13 +4,11 @@ import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
  
 public class ExampleForIE {
     public static void main(String[] args) {
@@ -50,9 +48,14 @@ public class ExampleForIE {
         Select ou = new Select(driver.findElement(By.name("organizationId")));
         ou.selectByVisibleText("ARROW GERMANY");
 
-        WebElement pickForm = driver.findElement(By.name("pickForm"));
-        pickForm.submit();
+//        WebElement pickForm = driver.findElement(By.name("pickForm"));
+//        pickForm.submit();
         
+       // driver.findElement(By.name("submit")).findElement(By.xpath("..")).click();
+        driver.findElement(By.xpath("//input[@name='submit']")).click();
+        
+        WebElement eAction = driver.findElement(By.xpath("//input[@name='submit']"));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", eAction);
         System.out.println("2 Page title is: " + driver.getTitle());
  
         // 关闭浏览器
