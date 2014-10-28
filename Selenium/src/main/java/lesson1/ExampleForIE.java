@@ -11,8 +11,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
  
 public class ExampleForIE {
-    public static void main(String[] args) {
-    	
+	private boolean result = Boolean.FALSE;
+	public void loginTest(){
     	File file = new File("C:/Selenium/IEDriverServer_32.exe");
     	System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
         // 如果你的 FireFox 没有安装在默认目录，那么必须在程序中设置
@@ -57,6 +57,17 @@ public class ExampleForIE {
         WebElement eAction = driver.findElement(By.xpath("//input[@name='submit']"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", eAction);
         System.out.println("2 Page title is: " + driver.getTitle());
+        result = Boolean.TRUE;
+	}
+    public boolean isResult() {
+		return result;
+	}
+	public void setResult(boolean result) {
+		this.result = result;
+	}
+	public static void main(String[] args) {
+    	
+
  
         // 关闭浏览器
         //driver.quit();

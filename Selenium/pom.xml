@@ -31,5 +31,5 @@
                     </exclusions>
                 </dependency>
             </dependencies>
-        </dependencyManagement>
+        </dependencyManagement>  
 </project>
