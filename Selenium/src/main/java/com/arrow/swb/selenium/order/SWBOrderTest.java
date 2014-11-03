@@ -1,4 +1,4 @@
-package com.arrow.swb.selenium.order.cmpqaeu;
+package com.arrow.swb.selenium.order;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -47,19 +47,38 @@ public class SWBOrderTest extends SWBTest {
 		//Click New button to add new line
 		this.getDriver().findElement(By.id("ext-gen1430")).click();
 		//Type quantity
-		//this.getDriver().findElement(By.name("ordQuantity")).click();
-
 		this.getDriver().findElement(By.name("ordQuantity")).sendKeys("3000");
 		this.getDriver().findElement(By.name("ordQuantity")).sendKeys(Keys.TAB);
 		//Type item and tab out
 		this.getDriver().findElement(By.name("ordItem")).sendKeys("BAV99;215");
 		this.getDriver().findElement(By.name("ordItem")).sendKeys(Keys.TAB);
 		//Switch to part search iframe
-		WebElement iframe = this.getDriver().findElement(By.id("partSearchId"));
-		this.getDriver().switchTo().frame(iframe);
+		WebElement psiFrame = this.getDriver().findElement(By.id("partSearchId"));
+		this.getDriver().switchTo().frame(psiFrame);
 		//Select the first one part
 		this.getDriver().findElement(By.id("partSelectionIcon-0")).findElement(By.xpath("img")).click();
-		
+
+		this.getDriver().switchTo().defaultContent();
+
+	}
+	
+	public void copyOrder(){
+		//switch to the base iframe
+		WebElement iframe = this.getDriver().findElement(By.xpath("//iframe[contains(@src, 'order')]"));
+		this.getDriver().switchTo().frame(iframe);
+		//sleep for 10s
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Click More
+		this.getDriver().findElement(By.id("ext-gen1561")).click();
+		//Click Copy
+		this.getDriver().findElement(By.partialLinkText("Copy")).click();
+		//Click Ok
+		this.getDriver().findElement(By.xpath("//button[@type='Submit']")).click();
 	}
 	
 	public static void main(String[] args) {
@@ -68,6 +87,7 @@ public class SWBOrderTest extends SWBTest {
 		//Create Order
 		orderTest.createOrderHeader();
 		orderTest.createOrderLine();
+		orderTest.copyOrder();
 	}
 
 }

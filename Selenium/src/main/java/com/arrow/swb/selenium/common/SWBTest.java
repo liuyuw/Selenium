@@ -19,6 +19,7 @@ public class SWBTest {
 		SWBUtil.loadWebDriver();
 		driver = new InternetExplorerDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		SWBUtil.login(driver, instance);
 	}
 	/**
@@ -36,6 +37,7 @@ public class SWBTest {
 
 		}
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		SWBUtil.login(driver, instance);
 	}
 	
