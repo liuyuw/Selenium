@@ -9,11 +9,16 @@ import org.openqa.selenium.support.ui.Select;
 
 public class SWBUtil {
 	/**
-	 * For IE, we need load webdriver, for Firefox, we can ignore this
+	 * For IE/Chrome, we need load webdriver, for Firefox, we can ignore this
 	 */
-	public static void loadWebDriver() {
-		File file = new File("C:/Selenium/IEDriverServer_32.exe");
-		System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
+	public static void loadWebDriver(String browser) {
+		File file = null;
+		if("IE".equals(browser)){
+			file = new File("C:/Selenium/IEDriverServer_32.exe");
+		}else if ("CH".equals(browser)){
+			file = new File("D:/Selenium/chromedriver.exe");
+		}
+		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 	}
 
 	/**
