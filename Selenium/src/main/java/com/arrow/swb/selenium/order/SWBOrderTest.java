@@ -2,6 +2,7 @@ package com.arrow.swb.selenium.order;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.arrow.swb.selenium.common.SWBTest;
@@ -68,7 +69,7 @@ public class SWBOrderTest extends SWBTest {
 		this.getDriver().switchTo().frame(iframe);
 		//sleep for 10s
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(15000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

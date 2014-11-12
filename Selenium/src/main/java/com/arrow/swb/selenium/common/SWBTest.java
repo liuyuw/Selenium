@@ -15,6 +15,7 @@ public class SWBTest {
 	public void setDriver(WebDriver driver) {
 		this.driver = driver;
 	}
+	
 	public SWBTest(String instance){
 		//Default for IE
 		SWBUtil.loadWebDriver("IE");
